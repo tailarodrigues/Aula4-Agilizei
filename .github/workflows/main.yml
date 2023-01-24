@@ -1,0 +1,38 @@
+name: Testes 
+#gatilhos 
+# programados 
+#acionados por eventos
+
+on:
+  push:
+    branches: [ "main" ]
+ 
+jobs:
+  build:
+#maquina ou ambiente do git para executar os testes
+    runs-on: ubuntu-latest
+    
+#passos 
+steps:
+     #dow do codigo
+    - uses: actions/checkout@v3
+    #setup do node 
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+        
+    - run: npm install
+    - run: npm run cy:run
+        contiue-on-error:true 
+    - run: npm run report:merge
+    - run: npm run report:mocha
+    
+    #github pages - publicar o relatorio 
+    - name: Deploy do Git Pages
+      uses: JamesIves/github-pages-deploy-action@v4.4.1
+      with:
+        GITHUB_TOKEN:${{secrets.GITHUB_TOKEN}}
+        BRANCH: gh_pages
+        FOLDER: mochawesome-report
