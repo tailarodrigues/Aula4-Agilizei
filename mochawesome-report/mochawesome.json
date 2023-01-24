@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-18T17:43:17.417Z",
+    "end": "2023-01-18T17:43:23.867Z",
+    "duration": 6450,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "df1e84cd-2c5c-4fc6-a5fc-32c08e3f0d3e",
+      "title": "",
+      "fullFile": "cypress/integration/cadastro.spec.js",
+      "file": "cypress/integration/cadastro.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "321f0ee2-e955-4891-a556-0620930005c5",
+          "title": "Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Quando eu informasr os dados e finalizar, então o cadastro deve ser efetuado",
+              "fullTitle": "Cadastro Quando eu informasr os dados e finalizar, então o cadastro deve ser efetuado",
+              "timedOut": null,
+              "duration": 4686,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://form-agilizei.netlify.app/\"); //Inputs de texto / textarea / email -> type\ncy.get(\"input[name=firstName]\").type(chance.first());\ncy.get(\"input[name=lastName]\").type(chance.last());\ncy.get(\"textarea[name=adress]\").type(chance.address());\ncy.get(\"input[name=emailAdress]\").type(chance.email()); // Inputs radoi / checkboxers -> check\ncy.get('input[value=f').check();\ncy.get('input[type=checkbox]').check('Netflix');\ncy.get('input[type=checkbox]').check('Dormir'); // Inputs do tipo combobox  / select -> select\n//o # é usado para pegar o ID no select para identificar , foi usado o force apenas para forçar \n//achar o form na tela porem não é uma boa pratica\ncy.get('select#countries').select('Dinamarca', {\n  force: true\n});\ncy.get('select#years').select('2008', {\n  force: true\n});\ncy.get('select#months').select('Fevereiro', {\n  force: true\n});\ncy.get('select#days').select('20', {\n  force: true\n}); // Inputs de senha podemos usar type\ncy.get('input#firstpassword').type('T@i1234');\ncy.get('input#secondpassword').type('T@i1234'); // Inputs do tipo button -> click\ncy.contains('Finalizar cadastro').click(); //podemos pegar pelo nome do componente usando o contains ou pelo tipo do seletor. \n//  cy.get('button#submitbtn').click()\n//ASSERÇÕES \n//Espero que minha aplicação seja direcionada para a listagem via url, usanod o should\ncy.url().should('contain', 'listagem');",
+              "err": {},
+              "uuid": "5a323ca1-445c-4a31-853f-16aed02fc046",
+              "parentUUID": "321f0ee2-e955-4891-a556-0620930005c5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5a323ca1-445c-4a31-853f-16aed02fc046"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4686,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

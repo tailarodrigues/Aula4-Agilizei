@@ -1,0 +1,184 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-18T17:43:17.417Z",
+    "end": "2023-01-18T17:43:28.264Z",
+    "duration": 5206,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e8fccc50-ad0d-41e3-9a2a-023707b956f4",
+      "title": "",
+      "fullFile": "cypress/integration/listagem.spec.js",
+      "file": "cypress/integration/listagem.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0edc52a6-261b-442a-9f88-571cbfc2a579",
+          "title": "Listagem",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Quando não houver cadastros, então a listagem deve estar vazia",
+              "fullTitle": "Listagem Quando não houver cadastros, então a listagem deve estar vazia",
+              "timedOut": null,
+              "duration": 350,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('listagem-vazia').then(data => {\n  window.localStorage.setItem('data', JSON.stringify(data));\n});\ncy.visit('https://form-agilizei.netlify.app/listagem.html');\ncy.get('table tbody tr').should('have.length', 0);",
+              "err": {},
+              "uuid": "c5207cd6-aedd-42e1-81f7-9e637e08c469",
+              "parentUUID": "0edc52a6-261b-442a-9f88-571cbfc2a579",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Quando houver cadastros, então a listagem deve exibir registro",
+              "fullTitle": "Listagem Quando houver cadastros, então a listagem deve exibir registro",
+              "timedOut": null,
+              "duration": 170,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('listagem-com-itens').then(data => {\n  window.localStorage.setItem('data', JSON.stringify(data));\n});\ncy.visit('https://form-agilizei.netlify.app/listagem.html');\ncy.get('table tbody tr').should('have.length', 2);",
+              "err": {},
+              "uuid": "d1a59cf8-7b4a-4819-a4d0-03ca2985d10e",
+              "parentUUID": "0edc52a6-261b-442a-9f88-571cbfc2a579",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c5207cd6-aedd-42e1-81f7-9e637e08c469",
+            "d1a59cf8-7b4a-4819-a4d0-03ca2985d10e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 520,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "df1e84cd-2c5c-4fc6-a5fc-32c08e3f0d3e",
+      "title": "",
+      "fullFile": "cypress/integration/cadastro.spec.js",
+      "file": "cypress/integration/cadastro.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "321f0ee2-e955-4891-a556-0620930005c5",
+          "title": "Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Quando eu informasr os dados e finalizar, então o cadastro deve ser efetuado",
+              "fullTitle": "Cadastro Quando eu informasr os dados e finalizar, então o cadastro deve ser efetuado",
+              "timedOut": null,
+              "duration": 4686,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://form-agilizei.netlify.app/\"); //Inputs de texto / textarea / email -> type\ncy.get(\"input[name=firstName]\").type(chance.first());\ncy.get(\"input[name=lastName]\").type(chance.last());\ncy.get(\"textarea[name=adress]\").type(chance.address());\ncy.get(\"input[name=emailAdress]\").type(chance.email()); // Inputs radoi / checkboxers -> check\ncy.get('input[value=f').check();\ncy.get('input[type=checkbox]').check('Netflix');\ncy.get('input[type=checkbox]').check('Dormir'); // Inputs do tipo combobox  / select -> select\n//o # é usado para pegar o ID no select para identificar , foi usado o force apenas para forçar \n//achar o form na tela porem não é uma boa pratica\ncy.get('select#countries').select('Dinamarca', {\n  force: true\n});\ncy.get('select#years').select('2008', {\n  force: true\n});\ncy.get('select#months').select('Fevereiro', {\n  force: true\n});\ncy.get('select#days').select('20', {\n  force: true\n}); // Inputs de senha podemos usar type\ncy.get('input#firstpassword').type('T@i1234');\ncy.get('input#secondpassword').type('T@i1234'); // Inputs do tipo button -> click\ncy.contains('Finalizar cadastro').click(); //podemos pegar pelo nome do componente usando o contains ou pelo tipo do seletor. \n//  cy.get('button#submitbtn').click()\n//ASSERÇÕES \n//Espero que minha aplicação seja direcionada para a listagem via url, usanod o should\ncy.url().should('contain', 'listagem');",
+              "err": {},
+              "uuid": "5a323ca1-445c-4a31-853f-16aed02fc046",
+              "parentUUID": "321f0ee2-e955-4891-a556-0620930005c5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5a323ca1-445c-4a31-853f-16aed02fc046"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4686,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

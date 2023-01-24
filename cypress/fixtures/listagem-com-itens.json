@@ -1,0 +1,33 @@
+[
+    {
+        "firstName": "Curso Agilizei",
+        "lastName": "Incluindo dado",
+        "adress": "Rua do site",
+        "emailAdress": "teste@teste.com.br",
+        "radioGender": "f",
+        "checks": [
+            "Netflix",
+            "Dormir"
+        ],
+        "selectCountries": "Dinamarca",
+        "selectYears": "2008",
+        "selectMonths": "Fevereiro",
+        "pwd": "T@i1234"
+    },
+
+{
+    "firstName": "Curso 2",
+    "lastName": "Incluindo dado 2",
+    "adress": "Rua do site 2",
+    "emailAdress": "teste2@teste.com.br",
+    "radioGender": "m",
+    "checks": [
+        "Netflix",
+        "Dormir"
+    ],
+    "selectCountries": "Dinamarca",
+    "selectYears": "2008",
+    "selectMonths": "Fevereiro",
+    "pwd": "T@i1234"
+}
+]
